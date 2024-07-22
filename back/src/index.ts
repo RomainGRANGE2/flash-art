@@ -14,7 +14,11 @@ await DbConnect();
 const port = 3000
 console.log(`Server is running on port ${port}`);
 
-app.use("/api/*", cors());
+app.use("/api/*", cors({
+    origin: "*",
+    allowMethods: ["GET", "POST", "PUT", "DELETE"],
+    allowHeaders: ["Content-Type", "Authorization"],
+}));
 
 app.route("/api", styles);
 app.route("/api", auth);
